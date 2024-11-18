@@ -4,16 +4,16 @@ template<typename T>
 class Node {
 
 public:
-	Node(T value, Node<T> *nextNodePtr) {
-		this->value = value;
+	Node(T data, Node<T> *nextNodePtr) {
+		this->data = data;
 		this->nextNodePtr = nextNodePtr;
 	}
 	~Node() {
 		delete nextNodePtr;
 	}
 
-	T get_value() {
-		return this->value;
+	T get_data() {
+		return this->data;
 	}
 
 	Node<T>* get_next_node_ptr() {
@@ -21,7 +21,7 @@ public:
 	}
 
 private:
-	T value;
+	T data;
 	Node<T> *nextNodePtr;
 
 };
