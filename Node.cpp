@@ -1,10 +1,13 @@
 
+#include <iostream>
+
 template<typename T>
 
 class Node {
 
 public:
-	Node(T data, Node<T> *nextNodePtr) {
+	Node(int data, Node<T> *nextNodePtr) {
+		cout << "Creating node with data: " << data << endl;
 		this->data = data;
 		this->nextNodePtr = nextNodePtr;
 	}
@@ -12,7 +15,8 @@ public:
 		delete nextNodePtr;
 	}
 
-	T get_data() {
+	int get_data() {
+		cout << "Returning data:" << this->data << endl;
 		return this->data;
 	}
 
@@ -21,7 +25,7 @@ public:
 	}
 
 private:
-	T data;
+	int data;
 	Node<T> *nextNodePtr;
 
 };

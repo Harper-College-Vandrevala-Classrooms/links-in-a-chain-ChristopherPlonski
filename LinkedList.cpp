@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "Node.cpp"
 
@@ -12,8 +13,7 @@ public:
 		this->headNode = nullptr;
 	}
 
-	void insert(T value) {
-		cout << "CALL";
+	void insert(int value) {
 		Node<T> *newNode = nullptr;
 
 		if (this->headNode == nullptr) {
@@ -21,7 +21,7 @@ public:
 			newNode = new Node<T>(value, nullptr);
 		}
 		else {
-			cout << "not nullptr.\n";
+			cout << "not nullptr. For value: "<< to_string(value) <<". headNode deref: " << (*headNode).get_data() << endl;
 			newNode = new Node<T>(value, headNode);
 			//newNode = new Node<T>(value, &(*headNode));
 		}
@@ -30,25 +30,26 @@ public:
 	}
 
 	Node<T> get_front() {
-		if (headNode == nullptr) {
-			cerr << "Cannot get front of empty LinkedList.\n";
-			throw runtime_error("LinkedList is empty.");
-			return Node<T>(T(), nullptr);
-		}
+		//if (headNode == nullptr) {
+		//	cerr << "Cannot get front of empty LinkedList.\n";
+		//	throw runtime_error("LinkedList is empty.");
+		//	return Node<T>(T(), nullptr);
+		//}
 
+		cout << "Getting headnode with value: " << (*headNode).get_data() << ". nextNode dereffed: " << headNode->get_next_node_ptr()->get_data() << endl;
 		return *headNode;
 	}
 
 	void remove_front() {
-		if (headNode == nullptr) {
-			cerr << "Cannot remove front of empty LinkedList.\n";
-			throw runtime_error("LinkedList is empty.");
-			return;
-		}
+		//if (headNode == nullptr) {
+		//	cerr << "Cannot remove front of empty LinkedList.\n";
+		//	throw runtime_error("LinkedList is empty.");
+		//	return;
+		//}
 
 		Node<T> *nextHeadNode = headNode->get_next_node_ptr();
 
-		delete headNode;
+		//delete headNode;
 
 		headNode = nextHeadNode;
 	}
