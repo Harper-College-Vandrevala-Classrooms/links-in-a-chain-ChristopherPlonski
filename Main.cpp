@@ -27,9 +27,9 @@ int main() {
 
     LinkedList<ChainLink> chainLinkLinkedList = LinkedList<ChainLink>();
 
-    chainLinkLinkedList.insert(ChainLink("White"));
-    chainLinkLinkedList.insert(ChainLink("Yellow"));
-    chainLinkLinkedList.insert(ChainLink("Red"));
+    chainLinkLinkedList.insert_front(ChainLink("White"));
+    chainLinkLinkedList.insert_front(ChainLink("Yellow"));
+    chainLinkLinkedList.insert_front(ChainLink("Red"));
 
     assert(chainLinkLinkedList.get_front().get_data().get_color() == "Red");
     assert(chainLinkLinkedList.get_front().get_next_node_ptr()->get_data().get_color() == "Yellow");
@@ -49,10 +49,17 @@ int main() {
     // Tests list with other typess
 
     LinkedList<int> linkedList = LinkedList<int>();
-    linkedList.insert(1);
-    linkedList.insert(2);
-    linkedList.insert(3);
-    
+    linkedList.insert_front(3);
+    linkedList.insert_back(2);
+    linkedList.insert_front(4);
+    linkedList.insert_back(1);
+
+    assert(linkedList.get_front().get_data() == 4);
+    assert(linkedList.get_front().get_next_node_ptr()->get_data() == 3);
+    assert(linkedList.get_front().get_next_node_ptr()->get_next_node_ptr()->get_data() == 2);
+    assert(linkedList.get_front().get_next_node_ptr()->get_next_node_ptr()->get_next_node_ptr()->get_data() == 1);
+    assert(linkedList.get_front().get_next_node_ptr()->get_next_node_ptr()->get_next_node_ptr()->get_next_node_ptr() == nullptr);
+    linkedList.remove_front();
     assert(linkedList.get_front().get_data() == 3);
     assert(linkedList.get_front().get_next_node_ptr()->get_data() == 2);
     assert(linkedList.get_front().get_next_node_ptr()->get_next_node_ptr()->get_data() == 1);

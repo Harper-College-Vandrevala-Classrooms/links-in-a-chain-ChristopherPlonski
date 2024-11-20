@@ -13,7 +13,7 @@ public:
 		this->headNode = nullptr;
 	}
 
-	void insert(T value) {
+	void insert_front(T value) {
 		Node<T> *newNode = nullptr;
 
 		if (this->headNode == nullptr) {
@@ -23,10 +23,29 @@ public:
 		else {
 			//cout << "not nullptr. For value: "<< to_string(value) <<". headNode deref: " << (*headNode).get_data() << endl;
 			newNode = new Node<T>(value, headNode);
-			//newNode = new Node<T>(value, &(*headNode));
 		}
 
 		this->headNode = newNode;
+	}
+
+	void insert_back(T value) {
+		Node<T>* backNode = nullptr;
+		Node<T>* currentNodeToCheck = headNode;
+
+		bool foundBack = false;
+
+		while (!foundBack) {
+			if (currentNodeToCheck->get_next_node_ptr() == nullptr) {
+				backNode = currentNodeToCheck;
+				foundBack = true;
+			}
+			else {
+				currentNodeToCheck = currentNodeToCheck->get_next_node_ptr();
+			}
+		}
+
+		Node<T>* newNode = new Node<T>(value, nullptr);
+		backNode->set_next_node_ptr(newNode);
 	}
 
 	Node<T>& get_front() {

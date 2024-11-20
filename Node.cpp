@@ -24,6 +24,10 @@ public:
 		return this->nextNodePtr;
 	}
 
+	void set_next_node_ptr(Node<T> *nextNodePtr) {
+		this->nextNodePtr = nextNodePtr;
+	}
+
 private:
 	T data;
 	Node<T> *nextNodePtr;
