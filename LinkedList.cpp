@@ -50,7 +50,7 @@ public:
 
 	Node<T>& get_front() {
 		if (headNode == nullptr) {
-			cerr << "Cannot get front of empty LinkedList.\n";
+			cerr << "ERROR: Cannot get front of empty LinkedList.\n";
 			throw runtime_error("LinkedList is empty.");
 			return Node<T>(T(), nullptr);
 		}
@@ -61,7 +61,7 @@ public:
 
 	void remove_front() {
 		if (headNode == nullptr) {
-			cerr << "Cannot remove front of empty LinkedList.\n";
+			cerr << "ERROR: Cannot remove front of empty LinkedList.\n";
 			throw runtime_error("LinkedList is empty.");
 			return;
 		}
